@@ -1,0 +1,31 @@
+plugins {
+    id("org.jetbrains.kotlin.jvm") version "1.9.21" // Plugin JVM Kotlin
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.21" // Plugin de serialization
+}
+
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
+
+    // Bibliothèques Ktor pour les requêtes HTTP
+    implementation("io.ktor:ktor-client-core:2.0.0")
+    implementation("io.ktor:ktor-client-cio:2.0.0")
+    implementation("io.ktor:ktor-client-serialization:2.0.0")
+
+    // Bibliothèque Kotlinx Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1") // Compatible avec Kotlin 1.9.21
+}
+
+test {
+    useJUnitPlatform()
+}
+
+kotlin {
+    jvmToolchain(21) // Assure-toi que la version du JDK est bien configurée
+}
